@@ -27,7 +27,7 @@ jobs:
 
     - name: Run Perl script
       run: |
-        perl superslicer_to_orca.pl --input *.ini --outdir .
+        perl superslicer_to_orca.pl --input *.ini --outdir . --force-output
 
     - name: Upload output as artifact
       uses: actions/upload-artifact@v3
