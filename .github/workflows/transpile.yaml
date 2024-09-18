@@ -21,6 +21,10 @@ jobs:
       with:
         perl-version: '5.10'
 
+    - name: Set locale
+      run: |
+        chcp 1252
+
     - name: "install-with-cpanm"
       uses: perl-actions/install-with-cpanm@stable
       with:
