@@ -2,6 +2,10 @@
 use strict;
 use warnings;
 no warnings "exiting";
+use POSIX qw(setlocale LC_ALL);
+
+# Set locale to a supported one
+setlocale(LC_ALL, "en_US.UTF-8");
 
 use Getopt::Long;
 use File::Basename;

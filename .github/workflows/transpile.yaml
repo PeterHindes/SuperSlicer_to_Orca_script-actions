@@ -27,6 +27,12 @@ jobs:
         set LC_ALL=en_US.UTF-8
         set LANG=en_US.UTF-8
 
+    - name: Verify Perl version and modules
+      run: |
+        perl -v
+        perl -MEncode::Locale -e "print 'Encode::Locale is installed\n'"
+        perl -MTerm::Choose -e "print 'Term::Choose is installed\n'"
+
     - name: "install-with-cpanm"
       uses: perl-actions/install-with-cpanm@stable
       with:
