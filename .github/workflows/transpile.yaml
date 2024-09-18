@@ -30,7 +30,7 @@ jobs:
         perl superslicer_to_orca.pl --input *.ini --outdir .
 
     - name: Upload output as artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: output-json
         path: ./*.json
