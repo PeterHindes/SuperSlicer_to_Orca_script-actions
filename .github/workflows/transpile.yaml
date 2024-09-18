@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cpan Getopt::Long File::Basename File::Glob File::HomeDir Path::Class Path::Tiny String::Escape Term::Choose Term::Form::ReadLine Text::SimpleTable JSON::XS
+        cpan -T Getopt::Long File::Basename File::Glob File::HomeDir Path::Class Path::Tiny String::Escape Term::Choose Term::Form::ReadLine Text::SimpleTable JSON::XS
 
     - name: Run Perl script
       run: |
