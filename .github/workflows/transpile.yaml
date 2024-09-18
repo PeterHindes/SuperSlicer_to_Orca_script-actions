@@ -1,0 +1,36 @@
+name: Run Perl Script
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-perl-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Perl
+      uses: shogo82148/actions-setup-perl@v1
+      with:
+        perl-version: '5.32'
+
+    - name: Install dependencies
+      run: |
+        cpan Getopt::Long File::Basename File::Glob File::HomeDir Path::Class Path::Tiny String::Escape Term::Choose Term::Form::ReadLine Text::SimpleTable JSON::XS
+
+    - name: Run Perl script
+      run: |
+        perl superslicer_to_orca.pl --input input.ini --outdir .
+
+    - name: Upload output as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: output-json
+        path: ./*.json
