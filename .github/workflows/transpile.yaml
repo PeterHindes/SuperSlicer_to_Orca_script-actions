@@ -24,6 +24,7 @@ jobs:
     - name: "install-with-cpanm"
       uses: perl-actions/install-with-cpanm@stable
       with:
+        tests: false
         install: |
           Getopt::Long
           File::Basename
