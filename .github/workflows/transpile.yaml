@@ -29,46 +29,9 @@ jobs:
     - name: Install deps
       run: cpanm --notest Getopt::Long File::Basename File::Glob File::HomeDir Path::Class Path::Tiny String::Escape Term::Choose Term::Form::ReadLine Text::SimpleTable JSON::XS
 
-    # - name: Set locale
-    #   run: |
-    #     chcp 1252
-    #     set LC_ALL=en_US.UTF-8
-    #     set LANG=en_US.UTF-8
-
-    # - name: Install language pack
-    #   run: |
-    #     dism /online /add-capability /CapabilityName:Language.Basic~~~en-US~0.0.1.0
-    #     dism /online /add-capability /CapabilityName:Language.Handwriting~~~en-US~0.0.1.0
-    #     dism /online /add-capability /CapabilityName:Language.OCR~~~en-US~0.0.1.0
-    #     dism /online /add-capability /CapabilityName:Language.Speech~~~en-US~0.0.1.0
-    #     dism /online /add-capability /CapabilityName:Language.TextToSpeech~~~en-US~0.0.1.0
-
-    # - name: Verify Perl version and modules
-    #   run: |
-    #     perl -v
-    #     perl -MEncode::Locale -e "print 'Encode::Locale is installed\n'"
-    #     perl -MTerm::Choose -e "print 'Term::Choose is installed\n'"
-
-    # - name: "install-with-cpanm"
-    #   uses: perl-actions/install-with-cpanm@stable
-    #   with:
-    #     tests: false
-    #     install: |
-    #       Getopt::Long
-    #       File::Basename
-    #       File::Glob 
-    #       File::HomeDir 
-    #       Path::Class 
-    #       Path::Tiny 
-    #       String::Escape 
-    #       Term::Choose 
-    #       Term::Form::ReadLine 
-    #       Text::SimpleTable 
-    #       JSON::XS
-
     - name: Run Perl script
       run: |
-        perl superslicer_to_orca.pl --input sv06.ini --outdir . --force-output
+        perl superslicer_to_orca.pl --input sv06.ini --nozzle-size 0.8 --outdir . --force-output
 
     - name: Upload output as artifact
       uses: actions/upload-artifact@v3
