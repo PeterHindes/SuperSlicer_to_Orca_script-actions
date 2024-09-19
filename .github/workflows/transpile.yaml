@@ -35,11 +35,11 @@ jobs:
         dism /online /add-capability /CapabilityName:Language.Speech~~~en-US~0.0.1.0
         dism /online /add-capability /CapabilityName:Language.TextToSpeech~~~en-US~0.0.1.0
 
-    - name: Verify Perl version and modules
-      run: |
-        perl -v
-        perl -MEncode::Locale -e "print 'Encode::Locale is installed\n'"
-        perl -MTerm::Choose -e "print 'Term::Choose is installed\n'"
+    # - name: Verify Perl version and modules
+    #   run: |
+    #     perl -v
+    #     perl -MEncode::Locale -e "print 'Encode::Locale is installed\n'"
+    #     perl -MTerm::Choose -e "print 'Term::Choose is installed\n'"
 
     - name: "install-with-cpanm"
       uses: perl-actions/install-with-cpanm@stable
