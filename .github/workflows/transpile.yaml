@@ -21,11 +21,19 @@ jobs:
       with:
         perl-version: '5.10'
 
-    - name: Set locale
+    # - name: Set locale
+    #   run: |
+    #     chcp 1252
+    #     set LC_ALL=en_US.UTF-8
+    #     set LANG=en_US.UTF-8
+
+    - name: Install language pack
       run: |
-        chcp 1252
-        set LC_ALL=en_US.UTF-8
-        set LANG=en_US.UTF-8
+        dism /online /add-capability /CapabilityName:Language.Basic~~~en-US~0.0.1.0
+        dism /online /add-capability /CapabilityName:Language.Handwriting~~~en-US~0.0.1.0
+        dism /online /add-capability /CapabilityName:Language.OCR~~~en-US~0.0.1.0
+        dism /online /add-capability /CapabilityName:Language.Speech~~~en-US~0.0.1.0
+        dism /online /add-capability /CapabilityName:Language.TextToSpeech~~~en-US~0.0.1.0
 
     - name: Verify Perl version and modules
       run: |
