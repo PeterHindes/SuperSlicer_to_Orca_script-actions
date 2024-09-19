@@ -1279,8 +1279,6 @@ sub handle_physical_printer {
     my %printer_hash = ();
     my $file         = basename( $input_file->basename, ".ini" );
 
-    
-
     return if $status{value}{physical_printer} eq '<NONE>';
 
     my %printer_ini = ini_reader( file($status{value}{physical_printer}) )
