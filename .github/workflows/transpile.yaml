@@ -62,6 +62,9 @@ jobs:
     #       Text::SimpleTable 
     #       JSON::XS
 
+    - name: Set term to dummy
+      run : set TERM=dumb
+
     - name: Run Perl script
       run: |
         perl superslicer_to_orca.pl --input sv06.ini --outdir . --force-output
