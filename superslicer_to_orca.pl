@@ -1279,35 +1279,7 @@ sub handle_physical_printer {
     my %printer_hash = ();
     my $file         = basename( $input_file->basename, ".ini" );
 
-    if ( !defined $status{value}{physical_printer} ) {
-        if ( defined $status{dirs}{slicer}
-            && -d $status{dirs}{slicer}->subdir('physical_printer') )
-        {
-            my $item_dir   = $status{dirs}{slicer}->subdir('physical_printer');
-            my @items      = $item_dir->children(qr/\.ini$/);
-            my @item_names = map { basename( $_, '.ini' ) } @items;
-            push @item_names, '<NONE>';
-            $status{value}{physical_printer} = display_menu(
-                'In SuperSlicer and some versions of PrusaSlicer, most network-'
-                  . 'configuration settings are stored in a separate "physical '
-                  . 'printer" .ini file. Choose one of the detected physical '
-                  . 'printers below if you want to include its network settings '
-                  . "in $file\n\n",
-                1, @item_names
-            );
-
-            unless ( $status{value}{physical_printer} eq '<NONE>' ) {
-                $status{value}{physical_printer} =
-                  file( $item_dir, $status{value}{physical_printer} . '.ini' );
-            }
-
-            ask_yes_to_all( 'physical_printer', $file );
-
-        }
-        else {
-            $status{value}{physical_printer} = $input_file;
-        }
-    }
+    
 
     return if $status{value}{physical_printer} eq '<NONE>';
 
