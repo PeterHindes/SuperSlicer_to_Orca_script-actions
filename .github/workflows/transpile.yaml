@@ -21,6 +21,8 @@ jobs:
       with:
         perl-version: '5.32'
         distribution: strawberry
+    
+    - name: Install deps
       run: cpanm --notest Getopt::Long File::Basename File::Glob File::HomeDir Path::Class Path::Tiny String::Escape Term::Choose Term::Form::ReadLine Text::SimpleTable JSON::XS
 
     # - name: Set locale
