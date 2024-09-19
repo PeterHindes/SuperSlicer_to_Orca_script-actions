@@ -934,28 +934,8 @@ sub convert_params {
     };
 
     my $handle_compatible_condition = sub {
-        $new_value = ''
-          if ( ( defined $status{value}{$parameter} )
-            && ( $status{value}{$parameter} eq 'DISCARD' ) );
-        return $new_value
-          if ( ( $new_value eq '' )
-            || ( $status{value}{$parameter} eq 'KEEP' ) );
-        my $affected_profile = ( split( '_', $parameter ) )[1];
-        chop $affected_profile;
-        $status{value}{$parameter} = display_menu(
-            "The \e[1m$file\e[0m " . $status{ini_type} . " profile has the "
-              . "following \e[1m$parameter\e[0m value:\n\n\t\e[40m\e[0;93m"
-              . "$new_value\e[0m\n\nIf you keep this value, this "
-              . "$status{ini_type} profile will not be visible in "
-              . "OrcaSlicer unless you have selected a $affected_profile that "
-              . "satisfies all the conditions specified above. If you discard "
-              . "this value, this $status{ini_type} profile will be "
-              . "visible regardless of which $affected_profile you have "
-              . "selected.\n\nDo you want to KEEP this value or DISCARD it?\n\n",
-            1,
-            ( 'KEEP', 'DISCARD' )
-        );
-        ask_yes_to_all( $parameter, $file );
+        $new_value = '';
+        return $new_value;
     };
 
     # Dispatch table for handling special cases
