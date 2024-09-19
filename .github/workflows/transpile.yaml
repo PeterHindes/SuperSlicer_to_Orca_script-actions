@@ -62,8 +62,11 @@ jobs:
     #       Text::SimpleTable 
     #       JSON::XS
 
-    - name: Set term to dummy
-      run : set TERM=dumb
+    - name: Set term
+      run: |
+        set TERM=dumb
+        set COLUMNS=80
+        set LINES=24
 
     - name: Run Perl script
       run: |
